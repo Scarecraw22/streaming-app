@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: sa-streaming
+server:
+  port: 0
+  servlet:
+    contextPath: /streaming
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    instance:
+      preferIpAddress: true

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: sa-user
+server:
+  port: 0
+  servlet:
+    contextPath: /users
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    instance:
+      preferIpAddress: true
