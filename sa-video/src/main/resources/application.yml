@@ -1,7 +1,7 @@
 server:
-  port: 8083
+  port: 8084
   servlet:
-    contextPath: /api/users
+    contextPath: /video
 
 eureka:
   client:
@@ -12,7 +12,7 @@ eureka:
 
 spring:
   application:
-    name: sa-user
+    name: sa-video
   security:
     oauth2:
       resourceserver:

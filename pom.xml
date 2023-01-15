@@ -26,6 +26,7 @@
         <gmavenplus.version>2.1.0</gmavenplus.version>
         <ffmpeg.version>0.7.0</ffmpeg.version>
         <spring-cloud.version>4.0.0</spring-cloud.version>
+        <keycloak-adapter.version>20.0.3</keycloak-adapter.version>
         <lombok.version>1.18.24</lombok.version>
     </properties>
 
@@ -36,6 +37,20 @@
                 <artifactId>spring-boot-starter-parent</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2022.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak.bom</groupId>
+                <artifactId>keycloak-adapter-bom</artifactId>
+                <version>${keycloak-adapter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+spring:
+  application:
+    name: sa-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: users_match
+          uri: http://localhost:8083/api/users
+          predicates:
+            - Path=/api/users, /api/users/**
+          filters:
+            - TokenRelay=
+
+  security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: my-provider
+            client-id: streaming-api
+            client-secret: JhW8K2nHqT1kRXy7ZbJak3enom6k4crs
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://localhost:8081/login/oauth2/code/gateway"
+            scope: openid
+        provider:
+          my-provider:
+            issuer-uri: "http://localhost:8080/auth/realms/streaming_app"

@@ -1,0 +1,33 @@
+version: '3.9'
+
+volumes:
+  postgres_data:
+    driver: local
+
+services:
+  db:
+    image: postgres:15.1
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: keycloak_db
+    ports:
+      - 5432:5432
+  kc:
+    image: quay.io/keycloak/keycloak:legacy
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db
+      DB_SCHEMA: public
+      DB_DATABASE: keycloak_db
+      DB_USER: admin
+      DB_PASSWORD: admin
+      KEYCLOAK_USER: kc_admin
+      KEYCLOAK_PASSWORD: kc_password
+    ports:
+      - 8080:8080
+    depends_on:
+      - db

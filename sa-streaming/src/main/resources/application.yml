@@ -1,10 +1,17 @@
 spring:
   application:
     name: sa-streaming
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/auth/realms/streaming_app
+
 server:
-  port: 0
+  port: 8082
   servlet:
     contextPath: /streaming
+
 eureka:
   client:
     serviceUrl:
